@@ -1,0 +1,241 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>学習オントロジーを用いた過去問抽出システム</title>
+		<!-- css -->
+		<style type="text/css">
+		<!--
+		.button {
+			padding: 15px 40px;
+			font-size: 1.2em;
+			height: 70px;
+			width: 100px;
+		}
+		p {
+			font-size: 0.8em;
+		}
+		-->	
+		</style>
+		<!-- jQuery -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+		<!-- jQuery Ajax -->
+		<script type="text/javascript">			
+			// 有効なキーワードは最初から表示させよう
+			window.onload = function() {
+				// 無理やりクリックイベントを起こしちゃう
+				document.getElementById("keyEXT").click();
+			};
+
+			// winodowのりサイズに合わせたtableサイズの変更
+			var timer = false;
+			$(window).resize(function() {
+		    if (timer !== false) {
+	        clearTimeout(timer);
+		    }
+		    timer = setTimeout(function() {
+//	        console.log('resized');
+					var w = window.outerWidth - 100;
+
+	        var table = document.getElementById("dispTABLE");
+					table.setAttribute("style", 'width: '+ w +'px;');
+					var key = document.getElementsByClassName("KEY");
+					key[0].setAttribute("style", 'width: '+ (w * 0.2) +'px;');
+					var que = document.getElementsByClassName("QUE");
+					que[0].setAttribute("style", 'width: '+ (w * 0.8) +'px;');
+		    }, 400);
+			});
+
+			// hidden要素を表示
+			function cancelHidden(e) {
+//				console.log(e.parentNode.nextSibling.childNodes[0].childNodes);
+				var children = e.parentNode.nextSibling.childNodes[0].childNodes;
+				
+				// i+2ってするとフリーズする
+				for (var i = 1; i < children.length; i++) {
+					if (children[i].hidden) {
+						children[i].removeAttribute("hidden");
+					}
+				}				
+			}
+
+			// ノードを上に
+			function nodeUp(e) {
+				var node = e.parentNode.parentNode.parentNode;
+//				console.log(node);
+				if (node.previousSibling != null) {
+					node.parentNode.insertBefore(node, node.previousSibling);
+				}
+			}
+			// ノードを下に
+			function nodeDown(e) {
+				var node = e.parentNode.parentNode.parentNode;
+//				console.log(node);
+				if (node.nextSibling != null) {
+					node.parentNode.insertBefore(node, node.nextSibling.nextSibling);
+				}
+			}
+
+			// フォームに入力と一致したKEYを表示する
+			function extractSELKEY(keyword) {
+				var data = {
+					keyword: keyword
+				};
+
+				$.ajax({
+					data: data,
+					type: "POST",
+					url: "extractSELKEY.php",
+					
+					success: function(data, dataType) {
+						document.getElementById("dispKEY").innerHTML = data;
+					},
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
+            //this;
+            alert('Error : ' + errorThrown);
+          }
+				});				
+			}
+			// エンターキーが押されたら、キー検索を行う
+/*
+			window.onload = function() {
+				document.onkeydown = function(e) {
+					// エンターキー(13)なら
+					if (e.keyCode == 13) {
+						var key = document.getElementById("inputKEY").value;
+						alert(key);
+					}
+				}
+			}
+*/
+
+			// キーワードとオントロジーを照合し、過去問を抽出する
+			function extract(keyword) {
+				if (keyword != "") {
+					var data = {
+						keyword: keyword
+					};
+					$.ajax({
+						type: "POST",
+						url: "matchOnt.php",
+						data: data,
+						success: function(data, dataType) {
+//							document.getElementById("dispQUE").innerHTML = data;
+							var span = document.createElement("span");
+							span.innerHTML = data;
+							document.getElementById("dispQUE").appendChild(span);
+						},
+	          error: function(XMLHttpRequest, textStatus, errorThrown) {
+	            //this;
+	            alert('Error : ' + errorThrown);
+	          }
+					});
+				} else {
+					document.getElementById("dispQUE").innerHTML = 'キーワードが入力されていません';
+				}
+				// submit後、ページをリロードしないようにする
+				return false;
+			};
+
+	    $(document).ready(function() {
+				// 過去問の表示
+				$('#queALL').click(function() {
+					var data = {};
+					$.ajax({
+						type: "POST",
+						url: "extractQUE.php",
+						data: data,
+						success: function(data, dataType) {
+							document.getElementById("dispQUE").innerHTML = data;
+						},
+	          error: function(XMLHttpRequest, textStatus, errorThrown) {
+	            //this;
+	            alert('Error : ' + errorThrown);
+	          }
+					});
+					// submit後、ページをリロードしないようにする
+					return false;
+				});
+
+				// 学習オントロジーの表示
+				$('#ontALL').click(function() {
+					var w = window.screen.width/3;
+					var h = window.screen.width/3;
+					var subwin = window.open("./dispONT.html", "window_name", "width="+ w +", height="+ h +", scrollbars=yes");
+					subwin.focus();							
+					// submit後、ページをリロードしないようにする
+					return false;
+				});
+
+				// 有効なキーワード
+				$('#keyEXT').click(function() {
+					$.ajax({
+						type: "POST",
+						url: "extractKEY.php",
+						
+						success: function(data, dataType) {
+							document.getElementById("dispKEY").innerHTML = data;
+						},
+	          error: function(XMLHttpRequest, textStatus, errorThrown) {
+	            //this;
+	            alert('Error : ' + errorThrown);
+	          }
+					});
+					// submit後、ページをリロードしないようにする
+					return false;
+				});
+
+			});
+		</script>
+		<title>学習オントロジーを用いた過去問抽出システム</title>
+	</head>
+
+	<body style="text-align: center;">
+		<!-- タイトル -->
+		<header>
+			<br/>
+			<h1>学習オントロジーを用いた過去問抽出システム</h1>
+			<hr/>
+		</header>
+
+		<!-- 入力セクション -->
+		<section id="input">
+			<h2>入力セクション</h2>
+	
+			<!-- DB問題の一覧 -->
+			<table border="1" align="center"><tbody><form>
+				<!-- 学習オントロジーの一覧 -->
+				<tr align="center">
+					<td><p>学習オントロジー</p></td>
+					<td>
+						<input type="submit" id="ontALL" value="表示" />
+					</td>
+				</tr>
+
+			</form></tbody></table>
+		</section>
+
+		<hr/>
+
+		<!-- 表示セクション -->
+		<section id="disp">
+			<h2>表示セクション</h2>
+			<table id="dispTABLE" border="1" style="width: 1200px;">
+				<colgroup>
+					<col class="KEY" style="width: 200px;"></col>
+					<col class="QUE" style="width: 1000px;"></col>
+<!-- 					<col class="ONT" style="width: 200px;"></col> -->
+				</colgroup>
+				<tbody>
+					<tr>
+						<th><p>Display Question</p></th>
+<!-- 						<th><p>disp ONTOLOGY</p></th> -->
+					</tr>
+					<tr valign="top">
+						<td><div id="dispQUE"></div></td>
+<!-- 						<td><div id="dispONT"></div></td> -->
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</body>
+</html>

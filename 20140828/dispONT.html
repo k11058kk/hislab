@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>学習オントロジーを用いた過去問抽出システム</title>
+		<style type="text/css">
+/*
+			button {
+				width: 50px;
+				height: 50px;
+			}
+*/
+		canvas {
+			zoom: 1.0;
+		}
+		</style>
+		<!-- jQuery -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+		<!-- jQuery Ajax -->
+		<script type="text/javascript">
+			// ---------- メインウィンドウが消されてないかチェック ---------- //
+			var checkWindow = function() {
+				if (!window.opener || window.opener.closed) {
+				// 存在しない場合は警告ダイアログを表示
+				window.alert('メインウィンドウがありません'); 
+			}
+			};
+
+
+
+
+			// ---------- 描写 ---------- //
+			// ClickCancasの作成
+			function MakeClickCanvas(x, y, num, label) {
+				// canvasRemoveの作成（選択解除側）
+				var cnv = document.createElement("canvas");
+				// id設定
+				cnv.setAttribute("id", "canvasRemove" + num);
+				// calss
+				cnv.setAttribute("class", "zoom");
+				// サイズ設定
+				cnv.setAttribute("width", '10');
+				cnv.setAttribute("height", '10');				
+				// 位置設定
+				cnv.setAttribute("style", 'position: absolute; left: '+ x +'px; top: '+ y +'px; z-index: 2; cursor: pointer');
+				// イベント追加
+				cnv.setAttribute("onclick", 'setSelect('+ num +', event.shiftKey);');
+				// bodyに追加
+				var body = document.getElementById("main");
+				body.appendChild(cnv);
+
+				// contextの作成
+				var ctx = cnv.getContext("2d");
+				// 円を描画
+				ctx.beginPath();
+				ctx.fillStyle = 'rgb(105, 105, 105)'; // gray
+				ctx.arc(5, 5, 5, 0, Math.PI*2, false);
+				ctx.fill();
+
+
+				// canvasSelectの作成（選択側）
+				var cnv = document.createElement("canvas");
+				// id設定
+				cnv.setAttribute("id", "canvasSelect" + num);
+				// calss
+				cnv.setAttribute("class", "zoom");
+				// サイズ設定
+				cnv.setAttribute("width", '10');
+				cnv.setAttribute("height", '10');				
+				// 位置設定
+				cnv.setAttribute("style", 'position: absolute; left: '+ x +'px; top: '+ y +'px; z-index: 3; cursor: pointer');
+				// 初期値はhidden
+				cnv.setAttribute("hidden", 'hidden');
+				// イベント追加
+				cnv.setAttribute("onclick", 'removeSelect('+ num +', event.shiftKey);');
+				// bodyに追加
+				var body = document.getElementById("main");
+				body.appendChild(cnv);
+
+				// contextの作成
+				var ctx = cnv.getContext("2d");
+				// 円を描画
+				ctx.beginPath();
+				ctx.fillStyle = 'rgb(192, 80, 77)'; // red
+				ctx.arc(5, 5, 5, 0, Math.PI*2, false);
+				ctx.fill();
+			}
+			// 描写処理（HTML内のcanvasを読み込んだ後じゃないと動かないのでinit処理）
+			function init() {
+				$.ajax({
+				  url: 'ontology/FEPM.xml',
+				  cache: false,
+			    dataType: "xml",
+	
+					success: function(data, dataType) {
+						// xmlデータの取得
+						var xml = data;
+						// CONCEPTリストの取得
+						var concept = xml.getElementsByTagName('CONCEPT');
+
+						// canvasの作成
+						var canvas = document.getElementById("canvas");
+						var context = canvas.getContext("2d");
+
+						// canvasのサイズ処理
+						var canvassize = xml.getElementsByTagName('CANVAS_SIZE');
+						canvas.setAttribute("width", canvassize[0].getAttribute("w"));
+						canvas.setAttribute("height", canvassize[0].getAttribute("h"));
+
+						// 線描写処理に利用する配列を同時に作成する
+						var arrayLABEL = new Array();
+						// 1つずつノードを描写する
+						for (var i = 0; i < concept.length; i++) {
+							var label = concept[i].getElementsByTagName('LABEL');							
+							var pos = concept[i].getElementsByTagName('POS');							
+							// 描写
+							context.font = "10pt Arial";
+							context.fillText('　'+label[0].childNodes[0].nodeValue, pos[0].getAttribute("x"), pos[0].getAttribute("y"));
+							
+							// clickCanvasの作成
+							MakeClickCanvas(pos[0].getAttribute("x"), pos[0].getAttribute("y"), i, label[0].childNodes[0].nodeValue);
+
+							// 配列の作成
+							arrayLABEL[i] = new Object();
+							arrayLABEL[i]['label'] = label[0].childNodes[0].nodeValue;
+							arrayLABEL[i]['x'] = pos[0].getAttribute("x");
+							arrayLABEL[i]['y'] = pos[0].getAttribute("y");							
+						}
+						// 項目数をグローバル変数に代入
+						window.count = arrayLABEL.length;
+						window.labels = arrayLABEL;
+
+
+						// 線用canvasの作成
+						var canvas = document.getElementById("canvasB");
+						var context = canvas.getContext("2d");
+
+						// canvasのサイズ処理
+						var canvassize = xml.getElementsByTagName('CANVAS_SIZE');
+						canvas.setAttribute("width", canvassize[0].getAttribute("w"));
+						canvas.setAttribute("height", canvassize[0].getAttribute("h"));
+						// 重なり処理
+						context.globalAlpha = 0.5;
+
+						// ISA情報を取得
+						var ISA = xml.getElementsByTagName('ISA');
+						window.ISA = xml.getElementsByTagName('ISA');
+						// 線描写処理
+						for (var i = 0; i < ISA.length; i++) {
+							for (var j = 0; j < ISA.length; j++) {
+								// もし一致していれば、一致したparentのchild・一致したchildのparentで線を結ぶ
+								if (ISA[i].getAttribute('parent') == ISA[j].getAttribute('child')) {
+									// ※ISA[i]['parent']のx,y から ISA[i]['child']のx,y の線を描画すればよい
+									// ISAには位置情報がないので、arrayLABELから探す
+									for (var k = 0; k < arrayLABEL.length; k++) {
+										if (ISA[i].getAttribute('parent') == arrayLABEL[k]['label']) {
+											var px = arrayLABEL[k]['x'];
+											var py = arrayLABEL[k]['y'];
+										}
+										if (ISA[i].getAttribute('child') == arrayLABEL[k]['label']) {
+											var cx = arrayLABEL[k]['x'];
+											var cy = arrayLABEL[k]['y'];
+										}
+									}
+
+									// 宣言
+									context.beginPath();
+									// 書き始める箇所
+									context.moveTo(px, py);
+									// 終点
+									context.lineTo(cx, cy);
+									// 描画
+									context.stroke();
+								}
+							}						
+						}
+						// Anyの線描画処理
+						for (var i = 0; i < ISA.length; i++) {
+							// childにAnyがいる可能性は0なので, parentだけ探す
+							if ('Any' == ISA[i].getAttribute('parent')) {
+								for (var k = 0; k < arrayLABEL.length; k++) {
+									// Anyの場所は必ず添字0
+									var px = arrayLABEL[0]['x'];
+									var py = arrayLABEL[0]['y'];
+									// childの居場所は探す必要がある
+									if (ISA[i].getAttribute('child') == arrayLABEL[k]['label']) {
+										var cx = arrayLABEL[k]['x'];
+										var cy = arrayLABEL[k]['y'];
+									}
+								}
+								// 描画
+								context.beginPath();
+								context.moveTo(px, py);
+								context.lineTo(cx, cy);
+								context.stroke();
+							}						
+						}
+						
+						MakeBaseArray2();
+					},
+	        error: function(XMLHttpRequest, textStatus, errorThrown) {
+	          //this;
+	          alert('Error : ' + errorThrown);
+	        }
+				});
+			}
+
+
+
+
+			// ---------- ベース配列の作成 ---------- //
+			function MakeBaseArray() {
+				var BASE = new Array();
+				BASE[0] = {
+					label: 'Any',
+					quest: false,
+					child: new Array()
+				};
+				var TMP1 = BASE;
+
+				function Cover(ISA, mysearch) {	
+					// マッチしたものを格納する配列(次のmysearch)
+					var MATCH = new Array;
+
+					var TMP2 = TMP1;
+
+					// 検索対象リスト(mysearch)を基準に、ISAを走査
+					for (var i = 0; i < mysearch.length; i++) {
+						if (TMP2[i]) {
+							TMP1 = TMP2[i]['child'];
+						}
+						for (var j = 0; j < ISA.length; j++) {
+							// まずはparentを探す（parentが存在すれば、必ずchildも存在する）
+							if (mysearch[i] == ISA[j].getAttribute('parent')) {
+console.log('test: '+ ISA[j].getAttribute('child'));
+								// メイン処理
+								TMP1.push({
+									label: ISA[j].getAttribute('child'),
+									quest: false,
+									child: new Array()
+								});
+
+								// 再帰処理のために、一致したparentのchildを取得（次のmysearch）
+								MATCH.push(ISA[j].getAttribute('child'));
+							}
+						}
+					}
+
+					// 操作結果にparent(child)があれば、再帰処理
+					if (MATCH.length > 0) {
+						console.log('TMP2:');
+						console.log(TMP2);
+						Cover(ISA, MATCH);
+					} else {
+						console.log('TMP: ');
+						console.log(TMP1);
+					}
+				}
+				// 単に呼び出す（1回きり）
+				Cover(ISA, Array('Any'));
+			}
+			// ---------- ベース配列の作成 ---------- //
+			var BASE2 = new Object();
+			function makeTagList(keyword) {
+				var data = { keyword: keyword };
+				$.ajax({
+					type: "POST",
+					url: "extractTaglist.php",
+					data: data,
+					success: function(data, dataType) {
+						// console.log(data);
+						// PHPから配列は渡せないからね
+						var array = data.split(",");
+						BASE2[array[0]] = new Array();
+						// hidをpush
+						for (var j = 1; j < array.length-1; j++) {
+							if (array[j] != "") {
+								BASE2[array[0]].push(array[j]);
+							}
+						}
+					},
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert('Error : ' + errorThrown);
+          }
+				});
+			}
+			function MakeBaseArray2() {
+				for (var i = 0; i < labels.length; i++) {					
+					makeTagList(labels[i]['label']);
+				}
+			}
+
+
+
+
+			// ---------- clickCanvasの選択処理(赤 or グレー) ---------- //
+			// 子供を走査しながら選択処理を行う（前順走査）
+			function browseChild(num, flag) {				
+				// numから検索ノード名を取得
+				var label = labels[num]['label'];
+
+				// 自分自身は先に選択処理を行う
+				if (flag) removeSelect(num, false);
+				else setSelect(num, false);
+
+				// 照合処理のみを行う（下で呼び出してます）
+				function Cover(ISA, mysearch) {	
+					// マッチしたものを格納する配列(次のmysearch)
+					var arrayMatch = new Array;
+
+					// 検索対象リスト(mysearch)を基準に、ISAを走査
+					for (var i = 0; i < mysearch.length; i++) {
+						for (var j = 0; j < ISA.length; j++) {
+							// まずはparentを探す（parentが存在すれば、必ずchildも存在する）
+							if (mysearch[i] == ISA[j].getAttribute('parent')) {
+								// 選択処理
+								if (flag) removeSelect(j+1, false);
+								else setSelect(j+1, false);
+
+								// 再帰処理のために、一致したparentのchildを取得（次のmysearch）
+								arrayMatch.push(ISA[j].getAttribute('child'));
+							}
+						}
+					}
+
+					// 操作結果にparent(child)があれば、再帰処理
+					if (arrayMatch.length > 0) {
+						Cover(ISA, arrayMatch);
+					}
+				}
+				// 単に呼び出す（1回きり）
+				Cover(ISA, Array(label));
+			}
+			// グレーが押されたら、赤にする
+			function setSelect(num, flag) {
+				// shiftが押されてれば、子供も全部処理する
+				if (flag) {
+					browseChild(num, false);
+
+				// shiftが押されてなければ、選択されたノードだけ処理する
+				} else {
+					var select = document.getElementById("canvasSelect"+ num);
+					select.removeAttribute("hidden");					
+				}
+			}
+			// 赤が押されたら、グレーにする
+			function removeSelect(num, flag) {
+				if (flag) {
+					browseChild(num, true);
+				} else {
+					var select = document.getElementById("canvasSelect"+ num);
+					select.setAttribute("hidden", 'hidden');					
+				}
+			}
+
+
+
+
+			// ---------- 検索ボタンが押されたときの検索処理 ---------- //
+			// 引数に一致する設問を抽出
+			function extract(keyword) {
+				var data = { keyword: keyword };
+				$.ajax({　
+					type: "POST",
+					url: "matchOnt.php",
+					data: data,
+					success: function(data, dataType) {
+						var span = document.createElement("span");
+						span.innerHTML = data;
+						opener.document.getElementById("dispQUE").appendChild(span);
+					},
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
+            //this;
+            alert('Error : ' + errorThrown);
+          }
+				});
+			}
+			// 下位ノードと比較
+			function browsechild2(arrayTAG, label) {
+				// 照合処理のみを行う（下で呼び出してます）
+				function Cover(ISA, mysearch) {	
+					// マッチしたものを格納する配列(次のmysearch)
+					var arrayMatch = new Array;
+
+					// 検索対象リスト(mysearch)を基準に、ISAを走査
+					for (var i = 0; i < mysearch.length; i++) {
+						for (var j = 0; j < ISA.length; j++) {
+							// まずはparentを探す（parentが存在すれば、必ずchildも存在する）
+							if (mysearch[i] == ISA[j].getAttribute('parent')) {
+								// TAGLISTと照合
+								for (var k = 0; k < arrayTAG.length; k++) {
+									if (arrayTAG[k] == mysearch[i]) {
+										arrayTAGMATCH.push(arrayTAG[k]);
+									}
+								}
+
+								// 再帰処理のために、一致したparentのchildを取得（次のmysearch）
+								arrayMatch.push(ISA[j].getAttribute('child'));
+							}
+						}
+					}
+
+					// 操作結果にparent(child)があれば、再帰処理
+					if (arrayMatch.length > 0) {
+						Cover(ISA, arrayMatch);
+					}
+				}
+				// 単に呼び出す（1回きり）
+				Cover(ISA, Array(label));				
+			}
+			// タグを入手し、下位ノード比較関数を呼び出す
+			function getTaglist(keyword) {
+				var data = { keyword: keyword };
+				$.ajax({
+					type: "POST",
+					url: "extractTaglist.php",
+					data: data,
+					success: function(data, dataType) {
+						console.log(data);
+						if (data != 'false') {
+							var array = data.split(",");
+							var arrayTAG = new Array();
+							for (var i = 0; i < array.length; i++) {
+								if (array[i] == "FINISH") {									
+									// 子ノードを走査
+									browsechild2(arrayTAG, keyword);
+									arrayTAG = new Array();
+								} else {
+									arrayTAG.push(array[i]);
+								}
+							}
+						} else {
+							alert('extractTaglist error!!');
+						}
+					},
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert('Error : ' + errorThrown);
+          }
+				});
+			}
+			// 検索ボタンが押されたら呼び出される関数
+			// 範囲選択を走査し、抽出関数を呼び出す
+			function selectExtract() {
+				// arrayLABELの数(window.count)だけ、前順走査
+				for (var i = 0; i < count; i++) {
+					// selectCanvas(赤丸)にhiddenプロパティがセットされていなければ選択範囲とみなす
+					if (!document.getElementById("canvasSelect"+i).hidden) {
+						// タグを入手し、下位ノードと比較する
+						// getTaglist(labels[i]['label']);
+						
+						// 抽出
+						extract(labels[i]['label']);
+					}
+				}				
+			}
+			
+			function zoomCanvas(zoom) {
+				var classes = document.getElementsByClassName("zoom");
+				// console.log(classes[0]);
+				for (i = 0; i < classes.length; i++) {										
+					if (!classes[i].style.zoom) {
+						classes[i].style.zoom = 1;
+					}
+					if (zoom) {
+						classes[i].style.zoom *= 1.1;
+					} else {
+						classes[i].style.zoom /= 1.1;
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body onload="init()" id="main">
+		<div style="position: fixed; z-index: 5; right: 10px;">
+			<button type="button" onclick="zoomCanvas(true);"><h4>＋</h4></button>
+			<button type="button" onclick="zoomCanvas(false);"><h4>ー</h4></button>
+			<button type="button" onclick="selectExtract();"><h3>検索</h3></button>
+			<button type="button" onclick="opener.document.getElementById('dispQUE').innerHTML='';"><h3>非表示</h3></button>				
+		</div>
+		<canvas id="canvas" class="zoom" style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
+		<canvas id="canvasB" class="zoom" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+	</body>
+</html>

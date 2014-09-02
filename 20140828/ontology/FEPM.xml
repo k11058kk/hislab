@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OE_FILE filename="FEPM.xml" ont_id="1405337795662ont" >
+<FILENAME_ONT>FEPM.xml</FILENAME_ONT>
+<W_CONCEPTS>
+<CANVAS_SIZE w="4728" h="5042" x="812" y="0" />
+<CONCEPT id="1405337795662_n0" >
+<LABEL>Any</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="20" y="20"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795662_n1" >
+<LABEL>ハードウェア</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="160" y="300"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795662_n2" >
+<LABEL>数値・文字・画像・音声の表現</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="380" y="120"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795662_n3" >
+<LABEL>システム構成</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="420" y="1260"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795662_n4" >
+<LABEL>処理装置</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="460" y="320"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795662_n5" >
+<LABEL>記憶装置と媒体</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="420" y="520"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795662_n6" >
+<LABEL>入出力装置</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="460" y="700"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795662_n7" >
+<LABEL>命令関連</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="420" y="940"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795662_n8" >
+<LABEL>アドレス関連</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="420" y="1080"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795000_n9" >
+<LABEL>ハードディスク装置</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="600" y="520"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795000_n10" >
+<LABEL>アクセス時間関連</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="720" y="480"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795000_n11" >
+<LABEL>アクセス時間</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="900" y="480"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795000_n12" >
+<LABEL>稼動率関連</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="760" y="560"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795000_n13" >
+<LABEL>位置決め時間</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1020" y="400"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795000_n14" >
+<LABEL>回転待ち時間</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1020" y="440"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795000_n15" >
+<LABEL>待ち時間</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1040" y="480"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795000_n16" >
+<LABEL>データ転送時間</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1020" y="520"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795000_n17" >
+<LABEL>稼働率</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="880" y="560"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795000_n18" >
+<LABEL>MTBF</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="960" y="532"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1405337795000_n19" >
+<LABEL>MTTR</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="960" y="580"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030386000_n20" >
+<LABEL>数値の表現</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="740" y="40"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030386000_n21" >
+<LABEL>文字の表現</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="740" y="100"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030386000_n22" >
+<LABEL>画像の表現</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="740" y="140"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030386000_n23" >
+<LABEL>音声の表現</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="740" y="180"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030386000_n24" >
+<LABEL>浮動小数点関連</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="900" y="40"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030386000_n25" >
+<LABEL>浮動小数点</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1140" y="40"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030386000_n26" >
+<LABEL>仮数</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1280" y="20"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030386000_n27" >
+<LABEL>指数</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1280" y="48"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030386000_n28" >
+<LABEL>基数</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1280" y="84"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030988000_n29" >
+<LABEL>加算器関連</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="620" y="320"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030988000_n30" >
+<LABEL>論理回路</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="800" y="320"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030988000_n31" >
+<LABEL>論理ゲート</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="960" y="260"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030988000_n32" >
+<LABEL>AND</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1220" y="160"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030988000_n33" >
+<LABEL>OR</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1220" y="200"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030988000_n34" >
+<LABEL>NOR</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1220" y="240"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030988000_n35" >
+<LABEL>NOT</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1220" y="280"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030988000_n36" >
+<LABEL>NAND</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1212" y="308"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030988000_n37" >
+<LABEL>XOR</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1220" y="340"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030988000_n38" >
+<LABEL>加算器</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="980" y="320"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030988000_n39" >
+<LABEL>半加算器</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1040" y="300"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030988000_n40" >
+<LABEL>全加算器</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1040" y="340"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406030988000_n41" >
+<LABEL>論理演算</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="980" y="360"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406032052000_n42" >
+<LABEL>アドレス方式</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="620" y="1080"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406032052000_n43" >
+<LABEL>命令実行方式</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="620" y="820"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406032052000_n44" >
+<LABEL>命令実行順序</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="600" y="880"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406032052000_n45" >
+<LABEL>命令フェッチ</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="740" y="780"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406032052000_n46" >
+<LABEL>命令解読</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="740" y="820"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406032052000_n47" >
+<LABEL>オペランド読出し</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="720" y="860"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406032052000_n48" >
+<LABEL>命令実行</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="720" y="900"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406032052000_n49" >
+<LABEL>命令語</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="600" y="920"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406032052000_n50" >
+<LABEL>命令</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="600" y="980"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406032052000_n51" >
+<LABEL>命令コード部</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="680" y="960"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406032052000_n52" >
+<LABEL>アドレス部</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="660" y="1020"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406032052000_n53" >
+<LABEL>絶対アドレス方式</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="800" y="1040"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406032052000_n54" >
+<LABEL>指標付きアドレス指定方式</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="780" y="1120"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406712446000_n55" >
+<LABEL>温度モニタ関連</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="600" y="1260"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406712446000_n56" >
+<LABEL>BCD</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="780" y="1260"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406712446000_n57" >
+<LABEL>パック10進数</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="860" y="1260"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1406712446000_n58" >
+<LABEL>7セグメントLED</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="800" y="1300"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1407408122000_n59" >
+<LABEL>画像データ関連</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="917" y="140"/>
+<SUB_TREE>open</SUB_TREE>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<CONCEPT id="1407408122000_n60" >
+<LABEL>ランレングス符号</LABEL>
+<SUB_LABELS>
+</SUB_LABELS>
+<POS x="1088" y="134"/>
+<RELATIONS>
+</RELATIONS>
+<SUB_L label="" def="" role_name="" class_const="" rh_name ="" value ="" />
+</CONCEPT>
+<ISA id="1405337795662_isa9" parent="Any" child="ハードウェア" />
+<ISA id="1405337795662_isa10" parent="ハードウェア" child="数値・文字・画像・音声の表現" />
+<ISA id="1405337795662_isa11" parent="ハードウェア" child="処理装置" />
+<ISA id="1405337795662_isa12" parent="ハードウェア" child="記憶装置と媒体" />
+<ISA id="1405337795662_isa13" parent="ハードウェア" child="入出力装置" />
+<ISA id="1405337795662_isa14" parent="ハードウェア" child="命令関連" />
+<ISA id="1405337795662_isa15" parent="ハードウェア" child="アドレス関連" />
+<ISA id="1405337795662_isa16" parent="ハードウェア" child="システム構成" />
+<ISA id="1405337795000_isa28" parent="記憶装置と媒体" child="ハードディスク装置" />
+<ISA id="1405337795000_isa29" parent="ハードディスク装置" child="アクセス時間関連" />
+<ISA id="1405337795000_isa30" parent="アクセス時間関連" child="アクセス時間" />
+<ISA id="1405337795000_isa31" parent="ハードディスク装置" child="稼動率関連" />
+<ISA id="1405337795000_isa32" parent="アクセス時間" child="位置決め時間" />
+<ISA id="1405337795000_isa33" parent="アクセス時間" child="回転待ち時間" />
+<ISA id="1405337795000_isa34" parent="アクセス時間" child="待ち時間" />
+<ISA id="1405337795000_isa35" parent="アクセス時間" child="データ転送時間" />
+<ISA id="1405337795000_isa36" parent="稼動率関連" child="稼働率" />
+<ISA id="1405337795000_isa37" parent="稼働率" child="MTBF" />
+<ISA id="1405337795000_isa38" parent="稼働率" child="MTTR" />
+<ISA id="1406030386000_isa48" parent="数値・文字・画像・音声の表現" child="数値の表現" />
+<ISA id="1406030386000_isa49" parent="数値・文字・画像・音声の表現" child="文字の表現" />
+<ISA id="1406030386000_isa50" parent="数値・文字・画像・音声の表現" child="画像の表現" />
+<ISA id="1406030386000_isa51" parent="数値・文字・画像・音声の表現" child="音声の表現" />
+<ISA id="1406030386000_isa52" parent="数値の表現" child="浮動小数点関連" />
+<ISA id="1406030386000_isa53" parent="浮動小数点関連" child="浮動小数点" />
+<ISA id="1406030386000_isa54" parent="浮動小数点" child="仮数" />
+<ISA id="1406030386000_isa55" parent="浮動小数点" child="指数" />
+<ISA id="1406030386000_isa56" parent="浮動小数点" child="基数" />
+<ISA id="1406030988000_isa70" parent="処理装置" child="加算器関連" />
+<ISA id="1406030988000_isa71" parent="加算器関連" child="論理回路" />
+<ISA id="1406030988000_isa72" parent="論理回路" child="論理ゲート" />
+<ISA id="1406030988000_isa73" parent="論理ゲート" child="AND" />
+<ISA id="1406030988000_isa74" parent="論理ゲート" child="OR" />
+<ISA id="1406030988000_isa75" parent="論理ゲート" child="NOR" />
+<ISA id="1406030988000_isa76" parent="論理ゲート" child="NOT" />
+<ISA id="1406030988000_isa77" parent="論理ゲート" child="NAND" />
+<ISA id="1406030988000_isa78" parent="論理ゲート" child="XOR" />
+<ISA id="1406030988000_isa79" parent="論理回路" child="加算器" />
+<ISA id="1406030988000_isa80" parent="加算器" child="半加算器" />
+<ISA id="1406030988000_isa81" parent="加算器" child="全加算器" />
+<ISA id="1406030988000_isa82" parent="論理回路" child="論理演算" />
+<ISA id="1406032052000_isa96" parent="アドレス関連" child="アドレス方式" />
+<ISA id="1406032052000_isa97" parent="命令関連" child="命令実行方式" />
+<ISA id="1406032052000_isa98" parent="命令関連" child="命令実行順序" />
+<ISA id="1406032052000_isa99" parent="命令実行順序" child="命令フェッチ" />
+<ISA id="1406032052000_isa100" parent="命令実行順序" child="命令解読" />
+<ISA id="1406032052000_isa101" parent="命令実行順序" child="オペランド読出し" />
+<ISA id="1406032052000_isa102" parent="命令実行順序" child="命令実行" />
+<ISA id="1406032052000_isa103" parent="命令関連" child="命令語" />
+<ISA id="1406032052000_isa104" parent="命令関連" child="命令" />
+<ISA id="1406032052000_isa105" parent="命令" child="命令コード部" />
+<ISA id="1406032052000_isa106" parent="命令" child="アドレス部" />
+<ISA id="1406032052000_isa107" parent="アドレス方式" child="絶対アドレス方式" />
+<ISA id="1406032052000_isa108" parent="アドレス方式" child="指標付きアドレス指定方式" />
+<ISA id="1406712446000_isa113" parent="システム構成" child="温度モニタ関連" />
+<ISA id="1406712446000_isa114" parent="温度モニタ関連" child="BCD" />
+<ISA id="1406712446000_isa115" parent="BCD" child="パック10進数" />
+<ISA id="1406712446000_isa116" parent="温度モニタ関連" child="7セグメントLED" />
+<ISA id="1407408122000_isa119" parent="画像の表現" child="画像データ関連" />
+<ISA id="1407408122000_isa120" parent="画像データ関連" child="ランレングス符号" />
+</W_CONCEPTS>
+<R_CONCEPTS>
+<CANVAS_SIZE w="4813" h="5124" />
+</R_CONCEPTS>
+<PRINTER>
+<PAGE_SETTINGS header="true" footer="true" cropmarks="true" scale="100" />
+<PAGE_FORMAT w="595.0" h="842.0" iw="559.0" ih="783.0" ix="18.0" iy="18.0" />
+<PRINTER_SETTINGS orientation="1" printername="Canon MG3500 series" />
+</PRINTER>
+</OE_FILE>
